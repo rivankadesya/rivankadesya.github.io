@@ -8,9 +8,10 @@ export default defineConfig(({ mode }) => {
   // Base path untuk GitHub Pages
   // Jika menggunakan custom domain atau root repo, set ke "/"
   // Jika menggunakan GitHub Pages dengan repo name, set ke "/repo-name/"
-  const base = env.VITE_REPO_NAME ? `/${env.VITE_REPO_NAME}/` : "/";
+  const repoName = env.VITE_REPO_NAME || "website-portofolio";
+  const base = repoName ? `/${repoName}/` : "/";
   return {
-    base: "/website-portofolio/",
+    base: base,
     plugins: [
       react({
         // Enable Fast Refresh (Hot Reload)
