@@ -1,13 +1,28 @@
 import { useEffect, useState } from "react";
 import logo from "../../../assets/logo.png";
 import { Link } from "react-scroll";
-import { navbarConfig, personalInfo } from "../../../data/siteConfig";
+import {
+  contactInfo,
+  navbarConfig,
+  personalInfo,
+} from "../../../data/siteConfig";
 
 // Data navbar diambil dari siteConfig.js
 // Untuk mengubah, edit file: src/data/siteConfig.js
 const navItems = navbarConfig.menuItems;
 const displayName = personalInfo.shortName || personalInfo.fullName;
 
+const getWhatsAppLink = (
+  message = "Hello! I'd like to discuss a project with you."
+) => {
+  const phoneContact = contactInfo.find((contact) => contact.type === "phone");
+  if (!phoneContact) return "#!";
+
+  // Format nomor: hapus + dan spasi, hanya angka
+  const phoneNumber = phoneContact.value.replace(/[\s+]/g, "");
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+};
 const handleMenuClick = () => {
   if (document.activeElement instanceof HTMLElement) {
     document.activeElement.blur();
@@ -105,15 +120,14 @@ const NavBar = () => {
             {menu}
           </ul>
           <p className="">
-            <Link
+            <a
+              href={getWhatsAppLink("Hello! I'd like to connect with you.")}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-sm xs:btn-md sm:btn-lg btn-primary"
-              href="#contact"
-              to={`contact`}
-              smooth={true}
-              duration={900}
             >
               Contact
-            </Link>
+            </a>
           </p>
         </div>
       </div>
