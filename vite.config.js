@@ -5,8 +5,12 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  // Base path untuk GitHub Pages
+  // Jika menggunakan custom domain atau root repo, set ke "/"
+  // Jika menggunakan GitHub Pages dengan repo name, set ke "/repo-name/"
+  const base = env.VITE_REPO_NAME ? `/${env.VITE_REPO_NAME}/` : "/";
   return {
-    base: `/${env.VITE_REPO_NAME}/`,
+    base: base,
     plugins: [
       react({
         // Enable Fast Refresh (Hot Reload)
