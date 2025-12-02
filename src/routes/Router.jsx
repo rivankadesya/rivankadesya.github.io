@@ -5,9 +5,9 @@ import Home from "../pages/Home";
 // Base path untuk GitHub Pages - harus sesuai dengan base di vite.config.js
 // Basename tidak menggunakan trailing slash, berbeda dengan base di vite.config.js
 // Hardcode untuk memastikan konsistensi dengan vite.config.js
-const repoName = import.meta.env.VITE_REPO_NAME || "website-portofolio";
+const repoName = import.meta.env.VITE_REPO_NAME || "";
 // Pastikan basename selalu menggunakan "website-portofolio" untuk menghindari mismatch
-const basename = "/website-portofolio";
+const basename = "/";
 
 // Debug logging
 
