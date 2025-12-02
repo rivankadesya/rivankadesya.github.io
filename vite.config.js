@@ -31,13 +31,13 @@ export default defineConfig(({ mode }) => {
         // Watch for file changes
         usePolling: false, // Set to true if hot reload doesn't work on some systems
       },
-      proxy: {
-        "/api": {
-          target: "http://localhost:5000",
-          changeOrigin: true,
-          secure: true,
-        },
-      },
+      // proxy: {
+      //   "/api": {
+      //     target: "http://localhost:5000",
+      //     changeOrigin: true,
+      //     secure: true,
+      //   },
+      // },
     },
   };
 });
