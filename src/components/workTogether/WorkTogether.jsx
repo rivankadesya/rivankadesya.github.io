@@ -17,7 +17,7 @@ const getWhatsAppLink = (message = "Hello! I have a project idea I'd like to dis
 // Untuk mengubah, edit file: src/data/siteConfig.js
 const WorkTogether = () => {
   return (
-    <div className="py-25 max-w-169 mx-auto px-2">
+    <div className="py-12 md:py-16 max-w-169 mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
       <div className="text-center">
         <p className="text-white md:font-semibold text-2xl sm:text-3xl md:text-5xl pb-8">
           {workTogether.title}

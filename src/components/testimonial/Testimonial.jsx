@@ -14,7 +14,7 @@ const testimonialData = testimonials;
 
 const Testimonial = () => {
   return (
-    <div className="flex mx-auto justify-center px-2 max-w-218 pb-10 md:pb-25">
+    <div className="flex mx-auto justify-center px-4 sm:px-6 md:px-8 lg:px-12 max-w-218 pb-10 md:pb-16">
       <div className="w-full h-full cursor-grab">
         <p className="section-title mb-6 text-center">Testimonial</p>
         <Swiper

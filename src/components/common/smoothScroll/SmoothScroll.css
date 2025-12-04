@@ -1,0 +1,180 @@
+/* Smooth Scroll dengan efek lokomotif */
+.smooth-scroll-enabled {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Efek momentum saat scrolling */
+.smooth-scroll-enabled.scrolling {
+  cursor: grabbing;
+}
+
+.smooth-scroll-enabled.scrolling * {
+  pointer-events: none;
+  user-select: none;
+}
+
+.smooth-scroll-enabled.scrolling a,
+.smooth-scroll-enabled.scrolling button {
+  pointer-events: auto;
+}
+
+/* Efek parallax untuk elemen saat scroll */
+.smooth-scroll-enabled [data-scroll-speed] {
+  will-change: transform;
+}
+
+/* Optimasi performa untuk elemen yang di-animate */
+.smooth-scroll-enabled * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transition untuk elemen yang muncul saat scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utility classes untuk animasi scroll */
+.scroll-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.scroll-fade-in-down {
+  animation: fadeInDown 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.scroll-fade-in-left {
+  animation: fadeInLeft 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.scroll-fade-in-right {
+  animation: fadeInRight 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.scroll-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Efek momentum scroll indicator (opsional) */
+.scroll-momentum-indicator {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 100px;
+  background: rgba(0, 217, 255, 0.2);
+  border-radius: 2px;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.smooth-scroll-enabled.scrolling .scroll-momentum-indicator {
+  opacity: 1;
+}
+
+.scroll-momentum-indicator::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(180deg, #00d9ff 0%, transparent 100%);
+  border-radius: 2px;
+  animation: scrollIndicator 2s ease-in-out infinite;
+}
+
+@keyframes scrollIndicator {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(400%);
+    opacity: 0.3;
+  }
+}
+
+/* Smooth scroll untuk touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .smooth-scroll-enabled {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Disable smooth scroll untuk user yang prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .smooth-scroll-enabled {
+    scroll-behavior: auto;
+  }
+  
+  .scroll-fade-in-up,
+  .scroll-fade-in-down,
+  .scroll-fade-in-left,
+  .scroll-fade-in-right,
+  .scroll-scale-in {
+    animation: none;
+    opacity: 1;
+  }
+}
+

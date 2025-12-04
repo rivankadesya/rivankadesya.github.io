@@ -162,7 +162,7 @@ const brandLogos = [
 
 const HappyClients = () => {
   return (
-    <div className="content py-10 md:py-25 flex flex-col items-center px-2">
+    <div className="content py-10 md:py-16 flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12">
       <div className="max-w-144.25 text-center ">
         <p className="section-title mb-6">Happy Clients</p>
         <p className="text-[14px] sm:text-lg text-gray-300 font-normal">

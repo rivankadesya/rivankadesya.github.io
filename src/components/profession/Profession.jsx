@@ -19,7 +19,7 @@ const Profession = () => {
 
   return (
     <div
-      className="content grid md:grid-cols-2 max-xxl:px-4 xxl:px-2 py-10 md:py-15 lg:py-37.5"
+      className="content grid md:grid-cols-2 px-4 sm:px-6 md:px-8 lg:px-12 max-xxl:px-6 py-10 md:py-12 lg:py-16"
       id="services"
     >
       <div className="flex flex-col justify-between h-fit md:pe-8 lg:pe-35.75 max-md:text-center my-auto">

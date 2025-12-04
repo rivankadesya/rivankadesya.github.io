@@ -83,8 +83,8 @@ const blogData = [
 
 const Blog = () => {
   return (
-    <div className="content py-25 px-2 relative" id="activity">
-      <div className="max-w-135 text-center mx-auto pb-17.5">
+    <div className="content py-12 md:py-16 px-4 sm:px-6 md:px-8 lg:px-12 relative" id="activity">
+      <div className="max-w-135 text-center mx-auto pb-10">
         <p className="section-title pb-6">Activity</p>
         <p className="text-xs xs:text-[16px] md:text-lg text-gray-300">
           {activityInfo.description}

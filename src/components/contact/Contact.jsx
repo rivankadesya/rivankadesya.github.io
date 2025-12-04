@@ -5,7 +5,7 @@ import { contactData } from "../../data/contactData";
 
 const Contact = () => {
   return (
-    <div className="relative -bottom-15 -mt-15 z-10 px-2">
+    <div className="relative -bottom-15 -mt-15 z-10 px-4 sm:px-6 md:px-8 lg:px-12">
       <div
         className="content p-4 md:p-10 lg:p-22 bg-gray-800 border border-gray-700 rounded-2xl shadow-[0px_0px_90px_9px_rgba(0,217,255,0.1)]"
         id="contact"

@@ -40,6 +40,7 @@ body {
 
 .content {
   @apply max-xxl:w-full xxl:max-w-[1320px] xxl:mx-auto;
+  /* Padding horizontal akan di-handle oleh masing-masing komponen */
 }
 
 .section-title {

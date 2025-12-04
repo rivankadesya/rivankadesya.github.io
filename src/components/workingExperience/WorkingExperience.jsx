@@ -8,11 +8,11 @@ import ExperienceCard from "./ExperienceCard";
 const WorkingExperience = () => {
   return (
     <div
-      className="content mt-10 md:mt-15 xl:mt-25 mb-10 md:mb-25 max-xxl:p-2"
+      className="content mt-8 md:mt-12 xl:mt-16 mb-8 md:mb-12 px-4 sm:px-6 md:px-8 lg:px-12 max-xxl:px-6"
       id="experience"
     >
-      <div className="xl:mb-17.5 mb-5">
-        <div className="max-sm:px-2 text-center mx-auto max-w-144.25">
+      <div className="xl:mb-10 mb-5">
+        <div className="px-2 sm:px-4 text-center mx-auto max-w-144.25">
           <p className="section-title pb-6">Working Experience</p>
           <p className="text-xs xs:text-[16px] md:text-lg text-gray-300">
             {workingExperienceInfo.description}

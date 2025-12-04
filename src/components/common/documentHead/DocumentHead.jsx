@@ -18,9 +18,34 @@ const DocumentHead = () => {
       siteConfig.description ||
       `Portfolio website of ${personalInfo.fullName} - ${personalInfo.profession} with ${personalInfo.experience}`;
 
-    // Update favicon - hanya update jika berbeda dari yang di HTML
+    // Update favicon dengan base path yang benar
     const updateFavicon = () => {
-      const faviconPath = siteConfig.favicon;
+      // Gunakan BASE_URL dari Vite untuk mendapatkan base path yang benar
+      const baseUrl = import.meta.env.BASE_URL || "/";
+      const faviconPath = siteConfig.favicon || "/logo.png";
+      
+      // Pastikan favicon path menggunakan base URL yang benar
+      // Jika faviconPath sudah dimulai dengan /, gabungkan dengan baseUrl
+      let finalFaviconPath = faviconPath;
+      if (faviconPath.startsWith("/")) {
+        // Hapus leading slash dan gabungkan dengan baseUrl
+        // Pastikan baseUrl tidak double slash
+        const cleanBaseUrl = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
+        finalFaviconPath = cleanBaseUrl + faviconPath.substring(1);
+      } else {
+        // Jika tidak dimulai dengan /, tambahkan baseUrl
+        const cleanBaseUrl = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
+        finalFaviconPath = cleanBaseUrl + faviconPath;
+      }
+      
+      // Debug logging (hanya di development)
+      if (import.meta.env.DEV) {
+        console.log("🔍 Favicon Update:", {
+          baseUrl,
+          faviconPath,
+          finalFaviconPath,
+        });
+      }
       
       // Tentukan type berdasarkan ekstensi file
       let faviconType = "image/png";
@@ -38,10 +63,9 @@ const DocumentHead = () => {
       );
 
       allFaviconLinks.forEach((link) => {
-        if (link.href !== faviconPath && !link.href.includes(faviconPath)) {
-          link.href = faviconPath;
-          link.type = faviconType;
-        }
+        // Update href dengan path yang benar (dengan base URL)
+        link.href = finalFaviconPath;
+        link.type = faviconType;
       });
 
       // Pastikan ada minimal satu favicon link
@@ -49,7 +73,7 @@ const DocumentHead = () => {
         const link = document.createElement("link");
         link.rel = "icon";
         link.type = faviconType;
-        link.href = faviconPath;
+        link.href = finalFaviconPath;
         document.head.appendChild(link);
       }
     };

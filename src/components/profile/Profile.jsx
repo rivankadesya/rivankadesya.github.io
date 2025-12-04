@@ -9,7 +9,7 @@ import { profileInfo } from "../../data/siteConfig";
 const Profile = () => {
   return (
     <div
-      className={`relative mx-4 xxl:mx-0.5 -bottom-20 lg:-bottom-28 z-10 rounded-2xl bg-gray-800 border border-gray-700 drop-shadow-2xl max-xl:mb-5 shadow-cyan-500/20 xl:p-28 lg:p-20 md:p-16 sm:p-10 p-4`}
+      className={`relative mx-4 xxl:mx-0.5 -bottom-20 lg:-bottom-24 z-10 rounded-2xl bg-gray-800 border border-gray-700 drop-shadow-2xl max-xl:mb-5 shadow-cyan-500/20 xl:p-12 lg:p-10 md:p-8 sm:p-6 p-4`}
       id="profile"
     >
       <div className="flex max-md:flex-col justify-between items-center gap-6">

@@ -10,7 +10,7 @@ const displayName = personalInfo.shortName || personalInfo.fullName;
 
 const Footer = () => {
   return (
-    <footer className="relative pt-20 pb-10 md:pt-30 md:pb-15 overflow-hidden">
+    <footer className="relative pt-12 pb-8 md:pt-16 md:pb-12 overflow-hidden">
       {/* Background dengan gradient dan efek */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
         {/* Decorative elements */}
@@ -20,7 +20,7 @@ const Footer = () => {
         <div className="absolute bottom-20 left-1/3 w-1 h-1 bg-picto-primary rounded-full opacity-40"></div>
       </div>
 
-      <div className="relative content max-2xl:px-3">
+      <div className="relative content px-4 sm:px-6 md:px-8 lg:px-12 max-2xl:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-12">
           {/* Brand Section */}
           <div className="text-center md:text-left">
