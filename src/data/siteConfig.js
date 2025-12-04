@@ -111,7 +111,7 @@ export const contactInfo = [
   {
     type: "phone",
     label: "Call Me Now",
-    value: "+6281393914809",
+    value: "+6281393194809",
   },
   // Tambahkan kontak lain jika perlu
   // {
