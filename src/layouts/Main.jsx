@@ -3,10 +3,12 @@ import NavBar from "../components/common/navbar/NavBar";
 import Footer from "../components/common/footer/Footer";
 import ScrollToTop from "../components/common/scrollToTop/ScrollToTop";
 import DocumentHead from "../components/common/documentHead/DocumentHead";
+import SplashScreen from "../components/common/splashScreen/SplashScreen";
 
 const Main = () => {
   return (
     <div data-theme={"light"} className="relative">
+      <SplashScreen />
       <DocumentHead />
       <NavBar />
       <Outlet />
