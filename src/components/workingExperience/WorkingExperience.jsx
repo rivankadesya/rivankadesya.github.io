@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { workingExperienceInfo } from "../../data/siteConfig";
 import ExperienceCard from "./ExperienceCard";
 
@@ -6,9 +7,38 @@ import ExperienceCard from "./ExperienceCard";
 // Untuk menambah experience, edit array workingExperienceInfo.items di siteConfig.js
 
 const WorkingExperience = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div
-      className="content mt-8 md:mt-12 xl:mt-16 mb-8 md:mb-12 px-4 sm:px-6 md:px-8 lg:px-12 max-xxl:px-6"
+      ref={sectionRef}
+      className={`content mt-8 md:mt-12 xl:mt-16 mb-8 md:mb-12 px-4 sm:px-6 md:px-8 lg:px-12 max-xxl:px-6 transition-all duration-700 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[50px]"
+      }`}
       id="experience"
     >
       <div className="xl:mb-10 mb-5">
@@ -24,15 +54,21 @@ const WorkingExperience = () => {
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-picto-primary via-picto-primary/50 to-picto-primary transform md:-translate-x-1/2"></div>
-            
+
             {/* Experience items */}
             <div className="space-y-8 md:space-y-12">
               {workingExperienceInfo.items?.map((experience, index) => (
-                <ExperienceCard
+                <div
                   key={experience.id || index}
-                  data={experience}
-                  index={index}
-                />
+                  className={`transition-all duration-700 ease-out ${
+                    isVisible
+                      ? "opacity-100 translate-x-0 scale-100"
+                      : "opacity-0 translate-x-[-30px] scale-95"
+                  }`}
+                  style={{ transitionDelay: `${0.3 + index * 0.2}s` }}
+                >
+                  <ExperienceCard data={experience} index={index} />
+                </div>
               ))}
             </div>
           </div>
@@ -43,4 +79,3 @@ const WorkingExperience = () => {
 };
 
 export default WorkingExperience;
-

@@ -24,10 +24,10 @@ const Home = () => {
       <div className="bg-tech-darker">
         <WorkTogether />
       </div>
-      <div className="bg-tech-dark">
+      <div>
         <WorkingExperience />
       </div>
-      <div className="bg-tech-darker">
+      <div>
         <Education />
       </div>
       <div className="bg-tech-dark">

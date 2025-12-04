@@ -1,9 +1,72 @@
 .bg-highlight {
-  background: linear-gradient(to top, rgba(0, 217, 255, 0.3) 40%, transparent 40%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 217, 255, 0.3) 40%,
+    transparent 40%
+  );
   background-size: 100% 100%;
   background-repeat: no-repeat;
   padding-left: 2px;
   padding-right: 2px;
   color: #00d9ff;
   font-weight: 600;
+}
+
+/* Animations */
+.animate-on-scroll {
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-fade-in-up {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.animate-fade-in {
+  opacity: 1 !important;
+  transition: opacity 0.6s ease-out;
+}
+
+.animate-slide-in-left {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-scale-in {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Hover effects */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow effect */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+  }
 }

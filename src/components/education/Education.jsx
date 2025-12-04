@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { educationInfo } from "../../data/siteConfig";
 import EducationCard from "./EducationCard";
 
@@ -6,9 +7,38 @@ import EducationCard from "./EducationCard";
 // Untuk menambah education, edit array educationInfo.items di siteConfig.js
 
 const Education = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div
-      className="content mt-8 md:mt-12 xl:mt-16 mb-8 md:mb-12 px-4 sm:px-6 md:px-8 lg:px-12 max-xxl:px-6"
+      ref={sectionRef}
+      className={`content mt-8 md:mt-12 xl:mt-16 mb-8 md:mb-12 px-4 sm:px-6 md:px-8 lg:px-12 max-xxl:px-6 transition-all duration-700 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[50px]"
+      }`}
       id="education"
     >
       <div className="xl:mb-10 mb-5">
@@ -22,7 +52,17 @@ const Education = () => {
       <div className="mx-auto flex justify-center w-full">
         <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-6 w-full max-w-full">
           {educationInfo.items?.map((education, index) => (
-            <EducationCard key={education.id || index} data={education} />
+            <div
+              key={education.id || index}
+              className={`transition-all duration-700 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0 scale-100"
+                  : "opacity-0 translate-y-[30px] scale-95"
+              }`}
+              style={{ transitionDelay: `${0.2 + index * 0.1}s` }}
+            >
+              <EducationCard data={education} />
+            </div>
           ))}
         </div>
       </div>
@@ -31,4 +71,3 @@ const Education = () => {
 };
 
 export default Education;
-

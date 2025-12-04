@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import person from "../../assets/images/person2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
@@ -7,9 +8,40 @@ import { profileInfo } from "../../data/siteConfig";
 // Data profile diambil dari siteConfig.js
 // Untuk mengubah, edit file: src/data/siteConfig.js
 const Profile = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div
-      className={`relative mx-4 xxl:mx-0.5 -bottom-20 lg:-bottom-24 z-10 rounded-2xl bg-gray-800 border border-gray-700 drop-shadow-2xl max-xl:mb-5 shadow-cyan-500/20 xl:p-12 lg:p-10 md:p-8 sm:p-6 p-4`}
+      ref={sectionRef}
+      className={`relative mx-4 xxl:mx-0.5 -bottom-20 lg:-bottom-24 z-10 rounded-2xl bg-gray-800 border border-gray-700 drop-shadow-2xl max-xl:mb-5 shadow-cyan-500/20 xl:p-12 lg:p-10 md:p-8 sm:p-6 p-4 transition-all duration-700 ${
+        isVisible
+          ? "opacity-100 translate-y-0 scale-100"
+          : "opacity-0 translate-y-[50px] scale-95"
+      }`}
       id="profile"
     >
       <div className="flex max-md:flex-col justify-between items-center gap-6">

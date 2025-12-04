@@ -43,6 +43,57 @@
   padding: 2rem;
 }
 
+.loading-message-container {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.loading-message {
+  color: #00d9ff;
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+  letter-spacing: 0.05em;
+  animation: messageFadeIn 0.6s ease-in-out, messageGlow 2s ease-in-out infinite;
+  position: absolute;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 1rem;
+}
+
+@keyframes messageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes messageGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5),
+      0 0 20px rgba(0, 217, 255, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(0, 217, 255, 0.8),
+      0 0 25px rgba(0, 217, 255, 0.5), 0 0 35px rgba(0, 217, 255, 0.3);
+  }
+}
+
 .splash-logo {
   position: relative;
   width: 80px;
@@ -232,5 +283,13 @@
 
   .progress-container {
     max-width: 250px;
+  }
+
+  .loading-message {
+    font-size: 1rem;
+  }
+
+  .loading-message-container {
+    min-height: 50px;
   }
 }
